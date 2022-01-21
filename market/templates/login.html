@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="max-width: 500px">
+        <form method="POST" class="form-login" style="color:gray">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal text-light">
+                Please sign in
+            </h1>
+            <br>
+            <div class="form-floating mb-3">
+                {{ form.username(class="form-control", placeholder="username") }}
+                {{ form.username.label() }}
+            </div>
+
+            <div class="form-floating mb-3">
+                {{ form.password(class="form-control", placeholder="password") }}
+                {{ form.password.label() }}
+            </div>
+
+
+            {{ form.submit(class="btn btn-lg btn-primary") }}
+            <a class="link-secondary ms-3" href="{{ url_for('register_page') }}">Not signed up? Register here.</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}

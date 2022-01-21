@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Pixel Empire
+{% endblock %}
+{% block content %}
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light border border-dark">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4">
+                |-@-|
+            </h1>
+            <h1 class="display-4 font-weight-normal">Pixel Empire</h1>
+            <p class="lead font-weight-normal">Go the <a href="{{ url_for('market_page') }}">market</a> to browse and buy pixel art</p>
+  <p>Go make pixel art at <a href="https://make8bitart.com/">make8bitart.com</a> to sell here!</p>
+            <p><a href="{{ url_for('create_page') }}">Upload</a>  your pixel art and create a listing.</p>
+        </div>
+        <div class="product-device box-shadow d-none d-md-block">
+
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create Page
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="max-width: 500px">
+
+        <form method="POST" class="form-create" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Create a product
+            </h1>
+            <br>
+            <div class="form-floating mb-3">
+                {{ form.name(class="form-control", placeholder="") }}
+                {{ form.name.label() }}
+            </div>
+
+            <div class="form-floating mb-3">
+                {{ form.price(class="form-control", placeholder="") }}
+                {{ form.price.label() }}
+            </div>
+
+            <div class="form-floating mb-3">
+                {{ form.description(class="form-control mb-3", placeholder="") }}
+                {{ form.description.label() }}
+            </div>
+
+            <div class="form mb-3">
+                {{ form.file(class="form-control form-control-lg mb-3", placeholder="") }}
+
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-outline-success") }}
+
+        </form>
+    </div>
+
+{% endblock %}

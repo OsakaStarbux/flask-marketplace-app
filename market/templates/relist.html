@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List Item Page
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="max-width: 500px">
+
+        <form method="POST" class="form-relist" style="color:gray">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Make any changes and list your item
+            </h1>
+            <br>
+            <div class="form-floating mb-3">
+                {{ form.name(class="form-control", placeholder="") }}
+                {{ form.name.label() }}
+            </div>
+
+            <div class="form-floating mb-3">
+                {{ form.price(class="form-control", placeholder="") }}
+                {{ form.price.label() }}
+            </div>
+
+            <div class="form-floating mb-3">
+                {{ form.description(class="form-control mb-3", placeholder="") }}
+                {{ form.description.label() }}
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-outline-success") }}
+
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+Market Page
+{% endblock %}
+{% block content %}
+<div class="row mt-2 ms-2 me-2">
+   <div class="col-12">
+      <div class="mb-3">
+         <h3>Items listed for sale</h3>
+
+      </div>
+      <table class="table table-hover">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Owner</th>
+               <th scope="col">Name</th>
+
+               <th scope="col">Price</th>
+               <th scope="col">Options</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in available_items %}
+            <tr>
+               <td>{{ item.id }}</td>
+               <td>{{ item.owned_user.username }}</td>
+               <td>{{ item.name }}</td>
+
+               <td>{{ item.price }}</td>
+               <td>
+                  <a href="{{ url_for('detail_page', item_id=item.id) }}" class='btn btn-outline-info me-3' type="button">View details</a>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+</div>
+{% endblock %}

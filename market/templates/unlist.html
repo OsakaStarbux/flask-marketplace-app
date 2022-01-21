@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+    Unlist page
+{% endblock %}
+{% block content %}
+<div class="container m-3">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-8">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h2>{{ item.name }}</h2>
+            <h4>Price: <svg class="bi bi-coins" width="16" height="16" fill="currentcolor" color="currentcolor" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m0 5c5.0347e-4 2.3863 1.6865 4.4399 4.027 4.905-0.019236-2.0983 1.7064-5.6766 5.878-5.878-1.1927-5.9063-9.8844-5.0525-9.905 0.973zm16 5.5c0 3.0376-2.4624 5.5-5.5 5.5-3.0376 0-5.5-2.4624-5.5-5.5 0-3.0376 2.4624-5.5 5.5-5.5 3.0376 0 5.5 2.4624 5.5 5.5z"/>
+                    </svg>
+                {{ item.price }}
+            </h4>
+                <p>{{ item.description }}</p>
+                <p>ID: {{ item.id }}</p>
+
+                <form method="POST" class="form-unlist">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(class="btn btn-outline-light") }}
+                </form>
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

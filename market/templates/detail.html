@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+    Detail page
+{% endblock %}
+{% block content %}
+<div class="container m-3">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>{{ item.name }}</h2>
+          <h4>Price: <svg class="bi bi-coins" width="16" height="16" fill="currentcolor" color="currentcolor" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m0 5c5.0347e-4 2.3863 1.6865 4.4399 4.027 4.905-0.019236-2.0983 1.7064-5.6766 5.878-5.878-1.1927-5.9063-9.8844-5.0525-9.905 0.973zm16 5.5c0 3.0376-2.4624 5.5-5.5 5.5-3.0376 0-5.5-2.4624-5.5-5.5 0-3.0376 2.4624-5.5 5.5-5.5 3.0376 0 5.5 2.4624 5.5 5.5z"/>
+                    </svg>
+                {{ item.price }}
+            </h4>
+                <p>{{ item.description }}</p>
+                <p>ID: {{ item.id }}</p>
+
+                {% if current_user.id == item.owner %}
+
+                    <p>You are the owner of this item</p>
+
+                    {% if item.listed %}
+                    <p>Item is listed on the market.</p>
+                    <form action="{{ url_for('unlist_page', item_id=item.id)}}" method="post">
+                        {{ unlist_form.hidden_tag() }}
+                        {{ unlist_form.submit(class="btn btn-outline-light") }}
+                    </form>
+
+                    {% else %}
+                    <p>Item is not currently listed on the market.</p>
+                    <a class="btn btn-outline-light" href="{{url_for('relist_page', item_id=item.id)}}">List this item</a>
+                    {% endif %}
+                {% else %}
+
+                    <p>Current owner: {{ item.owned_user.username }}</p>
+                    <form method="POST" class="form-buy">
+
+                         {{ buy_form.hidden_tag() }}
+                        {{ buy_form.submit(class="btn btn-outline-light") }}
+                    </form>
+                {% endif %}
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="h-100">
+
+              <img src="{{ url_for('static', filename='uploads/' + item.img_filename) }}">
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
